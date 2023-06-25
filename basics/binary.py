@@ -26,10 +26,7 @@ class BinaryEncoder(object):
 
     @classmethod
     def add_padding(cls, s):
-        bit_len = len(s) * 8
-        padding = cls.bits - bit_len % cls.bits
-        byte_padding = padding // 8
-        return s.ljust(len(s) + byte_padding, b"=")
+        return s if len(s) % cls.group_width == 0 else s.ljust(cls.group_width, b"=")
 
     @classproperty
     def decode(cls):
@@ -54,18 +51,22 @@ class BinaryEncoder(object):
 
 class Base16(BinaryEncoder):
     bits = 16
+    group_width = 2
     encoder = base64.b16encode
     decoder = base64.b16decode
 
 
 class Base32(BinaryEncoder):
     bits = 32
+    group_width = 8
     encoder = base64.b32encode
     decoder = base64.b32decode
 
 
+
 class Base64(BinaryEncoder):
     bits = 64
+    group_width = 8
     encoder = base64.b64encode
     decoder = base64.b64decode
 
