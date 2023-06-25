@@ -3,5 +3,5 @@
 set -e
 set -x
 
-#ruff basic tests
-black basic tests --check
+#ruff basal tests
+black basal tests --check

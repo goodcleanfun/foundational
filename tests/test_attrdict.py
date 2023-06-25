@@ -1,4 +1,4 @@
-from basic.attrdict import AttrDict
+from basal.attrdict import AttrDict
 
 
 def test_attrdict():

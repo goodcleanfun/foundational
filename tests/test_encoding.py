@@ -1,4 +1,4 @@
-from basic.encoding import safe_decode, safe_encode
+from basal.encoding import safe_decode, safe_encode
 
 
 def test_safe_encode_ascii():

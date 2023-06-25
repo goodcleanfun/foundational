@@ -2,10 +2,10 @@ import copy
 import operator
 from collections import deque
 
-from basic.collections import is_mapping
-from basic.functions import attr_or_key_getter
-from basic.iterables import is_sequence, iterify
-from basic.nulls import DoesNotExist, Omitted
+from basal.collections import is_mapping
+from basal.functions import attr_or_key_getter
+from basal.iterables import is_sequence, iterify
+from basal.nulls import DoesNotExist, Omitted
 
 
 def deep_merge(d, *others, overwrite=True):
