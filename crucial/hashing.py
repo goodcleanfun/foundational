@@ -1,6 +1,6 @@
 import binascii
 
-from basal.encoding import safe_encode
+from crucial.encoding import safe_encode
 
 
 def crc32_unsigned(value):

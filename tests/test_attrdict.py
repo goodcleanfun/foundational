@@ -1,4 +1,4 @@
-from basal.attrdict import AttrDict
+from crucial.attrdict import AttrDict
 
 
 def test_attrdict():

@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "basal"
+name = "crucial"
 dynamic = ["version"]
 description = "A little library for commonly used Python functions"
 readme = "README.md"
@@ -13,7 +13,7 @@ authors = [
     { name = "Al Barrentine" },
 ]
 keywords = [
-    "basal",
+    "crucial",
     "utils",
 ]
 classifiers = [
@@ -42,14 +42,14 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/goodcleanfun/basal"
-Repository = "https://github.com/goodcleanfun/basal"
+Homepage = "https://github.com/goodcleanfun/crucial"
+Repository = "https://github.com/goodcleanfun/crucial"
 
 [tool.coverage.run]
 parallel = true
 source = [
     "tests",
-    "basal"
+    "crucial"
 ]
 context = '${CONTEXT}'
 
@@ -70,10 +70,10 @@ ignore = [
 ]
 
 [tool.hatch.version]
-path = "basal/__init__.py"
+path = "crucial/__init__.py"
 
 [tool.hatch.build.targets.sdist]
 include = [
-    "/basal",
+    "/crucial",
 ]
 

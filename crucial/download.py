@@ -5,7 +5,7 @@ import fsspec
 import furl
 import requests
 
-from basal.files import ensure_dir
+from crucial.files import ensure_dir
 
 
 def save_response_content(response, destination):
