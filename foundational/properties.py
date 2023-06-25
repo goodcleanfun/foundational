@@ -1,6 +1,6 @@
 from time import time
 
-from crucial.nulls import DoesNotExist
+from foundational.nulls import DoesNotExist
 
 
 class classproperty(object):

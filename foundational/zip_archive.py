@@ -3,7 +3,7 @@ import zipfile
 
 import fsspec
 
-from crucial.iterables import iterify
+from foundational.iterables import iterify
 
 
 def unzip_all_files(zip_filename, out_dir=None, full_path=True):

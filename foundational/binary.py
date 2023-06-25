@@ -1,8 +1,8 @@
 import base64
 
-from crucial.encoding import safe_decode, safe_encode
-from crucial.functions import Pipeline
-from crucial.properties import classproperty
+from foundational.encoding import safe_decode, safe_encode
+from foundational.functions import Pipeline
+from foundational.properties import classproperty
 
 
 def int_to_bytes(x: int, endianness="little"):
