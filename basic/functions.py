@@ -5,9 +5,9 @@ import operator
 import re
 from collections import deque
 
-from basics.exceptions import DecoratorIncompatibilityError
-from basics.iterables import iterify
-from basics.nulls import DoesNotExist
+from basic.exceptions import DecoratorIncompatibilityError
+from basic.iterables import iterify
+from basic.nulls import DoesNotExist
 
 
 def nop(obj):

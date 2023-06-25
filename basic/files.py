@@ -4,7 +4,7 @@ import subprocess
 
 import fsspec
 
-from basics.sizes import COPY_BUFFER_SIZE
+from basic.sizes import COPY_BUFFER_SIZE
 
 
 def ensure_dir(d):

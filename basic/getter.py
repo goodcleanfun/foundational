@@ -1,7 +1,7 @@
 import operator
 
-from basics.collections import is_mapping
-from basics.iterables import flatten
+from basic.collections import is_mapping
+from basic.iterables import flatten
 
 
 def key_getter(*attrs):

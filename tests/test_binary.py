@@ -1,4 +1,4 @@
-from basics.binary import Base16, Base32, Base64, Base85, int_from_bytes, int_to_bytes
+from basic.binary import Base16, Base32, Base64, Base85, int_from_bytes, int_to_bytes
 
 
 def test_int_bytes():
