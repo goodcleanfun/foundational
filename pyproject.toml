@@ -1,0 +1,54 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "basics"
+dynamic = ["version"]
+description = "A little library for commonly used Python functions"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.7"
+authors = [
+    { name = "Al Barrentine" },
+]
+keywords = [
+    "basics",
+    "utils",
+]
+classifiers = [
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+dependencies = [
+    "chardet",
+    "fsspec>=2022.3.0",
+    "ftfy",
+    "furl",
+    "inflect",
+    "pendulum",
+    "python-dateutil",
+    "pytz>=2022.1",
+    "requests",
+    "url-normalize",
+    "user-agents",
+]
+
+[project.urls]
+Homepage = "https://github.com/goodcleanfun/basics"
+
+[tool.hatch.version]
+path = "basics/__init__.py"
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/basics",
+]
+
