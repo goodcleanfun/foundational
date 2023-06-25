@@ -1,6 +1,8 @@
 import os
-import fsspec
 import zipfile
+
+import fsspec
+
 from basics.iterables import iterify
 
 

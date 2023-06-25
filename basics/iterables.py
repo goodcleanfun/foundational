@@ -1,6 +1,14 @@
-from collections.abc import Iterable, Sequence, Iterator, Generator
 from collections import deque
-from itertools import islice, chain, count, combinations, cycle, filterfalse, product, tee
+from collections.abc import Generator, Iterable, Iterator, Sequence
+from itertools import (
+    chain,
+    combinations,
+    count,
+    cycle,
+    filterfalse,
+    islice,
+    tee,
+)
 from typing import List
 
 

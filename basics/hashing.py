@@ -1,4 +1,5 @@
 import binascii
+
 from basics.encoding import safe_encode
 
 

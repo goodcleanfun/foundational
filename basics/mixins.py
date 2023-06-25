@@ -1,5 +1,4 @@
 import inspect
-from collections import deque
 
 
 class MixinHooks:

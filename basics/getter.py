@@ -1,5 +1,5 @@
 import operator
-from itertools import chain
+
 from basics.collections import is_mapping
 from basics.iterables import flatten
 

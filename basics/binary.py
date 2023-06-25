@@ -1,7 +1,9 @@
 import base64
-from basics.encoding import safe_encode, safe_decode
+
+from basics.encoding import safe_decode, safe_encode
 from basics.functions import Pipeline
 from basics.properties import classproperty
+
 
 def int_to_bytes(x: int, endianness='little'):
     if type(x) != int:

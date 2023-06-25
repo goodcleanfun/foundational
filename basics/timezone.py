@@ -1,5 +1,6 @@
-import pendulum
 from datetime import datetime
+
+import pendulum
 from pytz import timezone
 
 US_EASTERN = timezone('US/Eastern').zone

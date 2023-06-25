@@ -1,10 +1,8 @@
+import functools
 import inspect
 import itertools
-import functools
-import re
-
 import operator
-
+import re
 from collections import deque
 
 from basics.exceptions import DecoratorIncompatibilityError
@@ -67,8 +65,8 @@ def stop_on_conditions(*conditions, default=None):
         return func
     return deco
 
-true_values = set(['TRUE', 'T', 'Y', 'YES', 'ON', '1'])
-false_values = set(['FALSE', 'F', 'N', 'NO', 'OFF', '0'])
+true_values = {'TRUE', 'T', 'Y', 'YES', 'ON', '1'}
+false_values = {'FALSE', 'F', 'N', 'NO', 'OFF', '0'}
 
 def str_to_bool(value: str):
     value = (value or '').upper()

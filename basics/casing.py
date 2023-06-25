@@ -1,6 +1,5 @@
 import re
 
-
 camel_to_snake_re_all_caps = re.compile('([A-Z\\d]+)([A-Z][a-z])')
 camel_to_snake_re_before_word = re.compile('([a-z])([A-Z])')
 

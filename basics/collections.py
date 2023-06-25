@@ -1,5 +1,5 @@
 from collections import OrderedDict
-from collections.abc import Mapping, Hashable
+from collections.abc import Hashable, Mapping
 
 
 def unique_list(values):

@@ -1,7 +1,9 @@
-import fsspec
 import os
 import shutil
 import subprocess
+
+import fsspec
+
 from basics.sizes import COPY_BUFFER_SIZE
 
 
