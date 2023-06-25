@@ -63,7 +63,6 @@ class Base32(BinaryEncoder):
     decoder = base64.b32decode
 
 
-
 class Base64(BinaryEncoder):
     bits = 64
     group_width = 8
