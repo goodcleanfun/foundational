@@ -14,13 +14,13 @@ def ensure_dir(d):
 
 def copy_file(filename, dest, buffer_size=COPY_BUFFER_SIZE):
     dest_kwargs = {}
-    if dest.endswith('.gz') and not filename.endswith('.gz'):
-        dest_kwargs.update(compression='gzip')
-    elif dest.endswith('.zip') and not filename.endswith('.zip'):
-        dest_kwargs.update(compression='zip')
+    if dest.endswith(".gz") and not filename.endswith(".gz"):
+        dest_kwargs.update(compression="gzip")
+    elif dest.endswith(".zip") and not filename.endswith(".zip"):
+        dest_kwargs.update(compression="zip")
 
-    with fsspec.open(dest, 'wb', **dest_kwargs) as df:
-        with fsspec.open(filename, 'rb') as sf:
+    with fsspec.open(dest, "wb", **dest_kwargs) as df:
+        with fsspec.open(filename, "rb") as sf:
             shutil.copyfileobj(sf, df)
     return dest
 
@@ -31,6 +31,7 @@ def remove_file(filename):
 
 class cd:
     """Context manager for changing the current working directory"""
+
     def __init__(self, path):
         self.path = path
 

@@ -50,23 +50,24 @@ def flatten_args(*args):
 
     return result
 
+
 def combine_lists(*args: List):
     return sum(args, [])
 
 
 def pairwise(iterable):
-    '''
+    """
     s -> (s0,s1), (s1,s2), (s2, s3), ...
-    '''
+    """
     a, b = tee(iterable)
     next(b, None)
     return zip(a, b)
 
 
 def partition(pred, iterable):
-    '''
+    """
     Use a predicate to partition entries into false entries and true entries
-    '''
+    """
     # partition(is_odd, range(10)) --> 0 2 4 6 8   and  1 3 5 7 9
     t1, t2 = tee(iterable)
     return filterfalse(pred, t1), filter(pred, t2)
@@ -81,9 +82,9 @@ def powerset(iterable):
 
 
 def round_robin(*iterables):
-    '''
+    """
     roundrobin('ABC', 'D', 'EF') --> A D E B F C
-    '''
+    """
     # Recipe credited to George Sakkis
     pending = len(iterables)
     nexts = cycle(iter(it).__next__ for it in iterables)
@@ -104,7 +105,11 @@ def all_combinations(s):
     while q:
         left, right = q.popleft()
 
-        res = [(i, i + k) for k in range(2, len(right) + 1) for i in range(len(right) - k + 1)]
+        res = [
+            (i, i + k)
+            for k in range(2, len(right) + 1)
+            for i in range(len(right) - k + 1)
+        ]
 
         for i, j in res:
             new_left = tuple(left) + tuple(right[:i]) + (tuple(right[i:j]),)
@@ -187,7 +192,7 @@ def split_on_indices(it, indices, sort_indices=False):
             j += 1
             match.append(x)
             if j >= m:
-                match.extend(data[i + 1:])
+                match.extend(data[i + 1 :])
                 break
             ind = indices[j]
     return match, no_match
@@ -202,7 +207,9 @@ def merge_values_at_indices(it, indices, values, sort_indices=False):
     m = len(indices)
     other = listify(values)
     if len(other) != m:
-        raise ValueError(f"Length of merged sequence ({len(values)}) must be equal to length of indices {m}")
+        raise ValueError(
+            f"Length of merged sequence ({len(values)}) must be equal to length of indices {m}"
+        )
 
     if m == 0:
         return listify(it)

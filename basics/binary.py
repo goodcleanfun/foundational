@@ -5,20 +5,20 @@ from basics.functions import Pipeline
 from basics.properties import classproperty
 
 
-def int_to_bytes(x: int, endianness='little'):
+def int_to_bytes(x: int, endianness="little"):
     if type(x) != int:
         x = int(x)
     return x.to_bytes((x.bit_length() + 7) // 8, endianness)
 
 
-def int_from_bytes(x: bytes, endianness='little'):
+def int_from_bytes(x: bytes, endianness="little"):
     return int.from_bytes(x, endianness)
 
 
 class BinaryEncoder(object):
     @classmethod
     def strip_padding(cls, s):
-        return s.rstrip(b'=')
+        return s.rstrip(b"=")
 
     @classproperty
     def encode(cls):
@@ -29,7 +29,7 @@ class BinaryEncoder(object):
         bit_len = len(s) * 8
         padding = cls.bits - bit_len % cls.bits
         byte_padding = padding // 8
-        return s.ljust(len(s) + byte_padding, b'=')
+        return s.ljust(len(s) + byte_padding, b"=")
 
     @classproperty
     def decode(cls):
@@ -40,7 +40,7 @@ class BinaryEncoder(object):
         return safe_decode(cls.encode(safe_encode(s)))
 
     @classmethod
-    def encode_int(cls, x: int, endianness: str = 'little'):
+    def encode_int(cls, x: int, endianness: str = "little"):
         return safe_decode(cls.encode(int_to_bytes(x, endianness=endianness)))
 
     @classmethod
@@ -48,7 +48,7 @@ class BinaryEncoder(object):
         return safe_decode(cls.decode(safe_encode(s)))
 
     @classmethod
-    def decode_int(cls, s: str, endianness: str = 'little'):
+    def decode_int(cls, s: str, endianness: str = "little"):
         return int_from_bytes(cls.decode(safe_encode(s)), endianness=endianness)
 
 
@@ -77,4 +77,3 @@ class Base85(BinaryEncoder):
 
     encode = encoder
     decode = decoder
-

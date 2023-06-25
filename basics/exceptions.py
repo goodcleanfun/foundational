@@ -1,5 +1,3 @@
-
-
 class ConfigurationError(Exception):
     pass
 

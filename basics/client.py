@@ -1,5 +1,3 @@
-
-
 class ClientProxy(object):
     client = None
 

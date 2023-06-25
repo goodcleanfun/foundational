@@ -11,7 +11,7 @@ class StringEnum(str, enum.Enum):
 
     @property
     def display(self):
-        return self.value.replace('_', ' ').title()
+        return self.value.replace("_", " ").title()
 
     @classmethod
     def choices(cls):
@@ -28,6 +28,7 @@ class StringEnum(str, enum.Enum):
 
 class LabeledEnum(enum.Enum):
     label: str
+
     def __new__(cls, value, label):
         obj = object.__new__(cls)
         obj._value = value

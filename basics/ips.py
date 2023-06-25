@@ -25,10 +25,12 @@ def current_ip_address(as_type=str):
 def get_user_ip(request):
     remote_addr = request.remote_addr
 
-    if 'X-Original-Forwarded-For' in request.headers:
-        remote_addr = request.headers.getlist("X-Original-Forwarded-For")[0].rpartition(' ')[-1]
-    elif 'X-Forwarded-For' in request.headers:
-        remote_addr = request.headers.getlist("X-Forwarded-For")[0].rpartition(' ')[-1]
+    if "X-Original-Forwarded-For" in request.headers:
+        remote_addr = request.headers.getlist("X-Original-Forwarded-For")[0].rpartition(
+            " "
+        )[-1]
+    elif "X-Forwarded-For" in request.headers:
+        remote_addr = request.headers.getlist("X-Forwarded-For")[0].rpartition(" ")[-1]
 
     if remote_addr:
         return ip_address(remote_addr)
@@ -36,9 +38,9 @@ def get_user_ip(request):
 
 
 def cidr_block_to_ipv4_range(network):
-    addr, cidr = network.split('/')
+    addr, cidr = network.split("/")
     # Split address into octets and turn CIDR into int
-    addr = addr.split('.')
+    addr = addr.split(".")
     cidr = int(cidr)
 
     # Initialize the netmask and calculate based on CIDR mask
@@ -56,8 +58,7 @@ def cidr_block_to_ipv4_range(network):
     for i in range(brange):
         broad[3 - i // 8] = broad[3 - i // 8] + (1 << (i % 8))
 
-    network_start = net[0] * 2 ** 24 + net[1] * 2 ** 16 + net[2] * 2 ** 8 + net[3]
-    network_end = broad[0] * 2 ** 24 + broad[1] * 2 ** 16 + broad[2] * 2 ** 8 + broad[3]
-
+    network_start = net[0] * 2**24 + net[1] * 2**16 + net[2] * 2**8 + net[3]
+    network_end = broad[0] * 2**24 + broad[1] * 2**16 + broad[2] * 2**8 + broad[3]
 
     return (network_start, network_end)

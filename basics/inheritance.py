@@ -1,6 +1,11 @@
-
-
-def update_from_bases(cls, name, bases, initial_cls=dict, override_with_child=False, update_with_child=True):
+def update_from_bases(
+    cls,
+    name,
+    bases,
+    initial_cls=dict,
+    override_with_child=False,
+    update_with_child=True,
+):
     if name in cls.__dict__ and override_with_child:
         return cls.__dict__[name]
 

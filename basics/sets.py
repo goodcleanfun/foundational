@@ -1,5 +1,3 @@
-
-
 class NullSet(object):
     def __contains__(self, item):
         return False

@@ -6,8 +6,8 @@ class MixinHooks:
 
     @classmethod
     def call_mixin_hooks(cls, bases=None, **kwargs):
-        for base in (bases or inspect.getmro(cls)):
-            if 'mixin_hook' in base.__dict__:
+        for base in bases or inspect.getmro(cls):
+            if "mixin_hook" in base.__dict__:
                 base.mixin_hook(cls, **kwargs)
 
     @classmethod

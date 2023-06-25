@@ -37,24 +37,30 @@ not_none = functools.partial(operator.is_not, None)
 def if_none(default):
     def value(v):
         return v if v is not None else default
+
     return value
 
 
 def stop_on_input_values(*vals, default=None):
     if not vals:
         vals = (None,)
+
     def deco(f):
         @functools.wraps(f)
         def func(v):
             return f(v) if v not in vals else default
+
         return func
+
     if len(vals) == 1 and callable(vals[0]):
         f = vals[0]
         vals = (None,)
         return deco(f)
     return deco
 
+
 call_if_not_null = stop_on_input_values(None)
+
 
 def stop_on_conditions(*conditions, default=None):
     def deco(f):
@@ -62,14 +68,18 @@ def stop_on_conditions(*conditions, default=None):
         def func(v):
             all_conditions_met = all((c(v) for c in conditions))
             return f(v) if all_conditions_met else default
+
         return func
+
     return deco
 
-true_values = {'TRUE', 'T', 'Y', 'YES', 'ON', '1'}
-false_values = {'FALSE', 'F', 'N', 'NO', 'OFF', '0'}
+
+true_values = {"TRUE", "T", "Y", "YES", "ON", "1"}
+false_values = {"FALSE", "F", "N", "NO", "OFF", "0"}
+
 
 def str_to_bool(value: str):
-    value = (value or '').upper()
+    value = (value or "").upper()
     if value in true_values:
         return True
     elif value in false_values:
@@ -116,7 +126,9 @@ def attr_or_key_getter(key, default=DoesNotExist):
         else:
             obj = val
         return val
+
     return with_obj
+
 
 def has_all_attrs(*attrs: str):
     def attrs_exist(o):
@@ -173,6 +185,7 @@ def all_keys_not_none(*keys: str):
 def map_values(d: dict):
     def mapped_value(val):
         return d.get(val, val)
+
     return mapped_value
 
 
@@ -209,7 +222,9 @@ class Pipeline(object):
         self.functions = functions
 
     def __repr__(self):
-        return 'Pipeline: [{}]'.format(', '.join((str(func) for func in self.functions)))
+        return "Pipeline: [{}]".format(
+            ", ".join((str(func) for func in self.functions))
+        )
 
     def __call__(self, val):
         for f in self.functions:
@@ -249,10 +264,12 @@ class FunctionStarMap(object):
         self.use_tuple = use_tuple
 
     def __repr__(self):
-        return f'{self.__class__.__name__}: {self.function}'
+        return f"{self.__class__.__name__}: {self.function}"
 
     def __call__(self, *args, **kw):
-        val = list(itertools.chain(*itertools.starmap(self.function, itertools.chain(*args))))
+        val = list(
+            itertools.chain(*itertools.starmap(self.function, itertools.chain(*args)))
+        )
         if self.use_tuple:
             return tuple(val)
         else:
@@ -266,7 +283,7 @@ class VectorFunction(object):
         self.function = function
 
     def __repr__(self):
-        return f'{self.__class__.__name__}: {self.function}'
+        return f"{self.__class__.__name__}: {self.function}"
 
     def __call__(self, values):
         return list(map(self.function, values))
@@ -277,7 +294,7 @@ class ChainedFunction(object):
         self.function = function
 
     def __repr__(self):
-        return f'{self.__class__.__name__}: {self.function}'
+        return f"{self.__class__.__name__}: {self.function}"
 
     def __call__(self, values):
         return list(itertools.chain(*(map(self.function, iterify(v)) for v in values)))
@@ -289,6 +306,7 @@ class hybridmethod(object):
 
     def __get__(self, instance, owner):
         self_or_cls = owner if instance is None else instance
+
         @functools.wraps(self.func)
         def call_hybrid(*args, **kwargs):
             return self.func(self_or_cls, *args, **kwargs)
@@ -303,18 +321,20 @@ def get_innermost_argspec(method):
     q = deque([orig_method])
     while q:
         method = q.popleft()
-        if hasattr(method, '__func__'):
+        if hasattr(method, "__func__"):
             method = method.__func__
-        elif hasattr(method, 'func'):
+        elif hasattr(method, "func"):
             method = method.func
 
         argspec = inspect.getfullargspec(method)
         args = argspec.args
 
-        if args and args[0] in ('self', 'cls'):
+        if args and args[0] in ("self", "cls"):
             return argspec
-        if not hasattr(method, '__closure__') or method.__closure__ is None:
-            raise DecoratorIncompatibilityError('Decorator has no closure: {}'.format(method))
+        if not hasattr(method, "__closure__") or method.__closure__ is None:
+            raise DecoratorIncompatibilityError(
+                "Decorator has no closure: {}".format(method)
+            )
 
         closure = method.__closure__
 
@@ -322,6 +342,8 @@ def get_innermost_argspec(method):
             inner_method = cell.cell_contents
             if inner_method is method:
                 continue
-            if not inspect.isfunction(inner_method) and not inspect.ismethod(inner_method):
+            if not inspect.isfunction(inner_method) and not inspect.ismethod(
+                inner_method
+            ):
                 continue
             q.append(inner_method)

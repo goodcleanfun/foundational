@@ -1,10 +1,10 @@
-
 class _Omitted:
     def __bool__(self):
         return False
 
     def __repr__(self):
-        return 'Omitted'
+        return "Omitted"
+
 
 _Omitted.__nonzero__ = _Omitted.__bool__
 
@@ -16,7 +16,8 @@ class _DoesNotExist:
         return False
 
     def __repr__(self):
-        return 'DoesNotExist'
+        return "DoesNotExist"
+
 
 _DoesNotExist.__nonzero__ = _DoesNotExist.__bool__
 
@@ -29,4 +30,3 @@ class NotInSet:
 
 def obj_or_none(obj):
     return obj or None
-

@@ -7,7 +7,6 @@ class classproperty(object):
     def __init__(self, getter):
         self.getter = getter
 
-
     def __get__(self, instance, owner):
         return self.getter(owner)
 
@@ -29,6 +28,7 @@ class cached_property(object):
     with an ordinary attribute. Setting the ttl to a number expresses how long
     the property will last before being timed out (meaning it will be recomputed.)
     """
+
     def __init__(self, ttl=None, keep_cached_on_error=True):
         if callable(ttl):
             func = ttl
