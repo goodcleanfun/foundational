@@ -43,6 +43,31 @@ dependencies = [
 
 [project.urls]
 Homepage = "https://github.com/goodcleanfun/basics"
+Repository = "https://github.com/goodcleanfun/basics"
+
+[tool.coverage.run]
+parallel = true
+source = [
+    "tests",
+    "basics"
+]
+context = '${CONTEXT}'
+
+
+[tool.ruff]
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "C",  # flake8-comprehensions
+    "B",  # flake8-bugbear
+]
+ignore = [
+    "E501",  # line too long, handled by black
+    "B008",  # do not perform function calls in argument defaults
+    "C901",  # too complex
+]
 
 [tool.hatch.version]
 path = "basics/__init__.py"
