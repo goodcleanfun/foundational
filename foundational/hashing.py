@@ -9,9 +9,9 @@ def crc32_unsigned(value):
     return binascii.crc32(safe_encode(value)) & 0xFFFFFFFF
 
 
-def checksum(filename, hashfunc='md5'):
+def checksum(filename, hashfunc="md5"):
     if not isinstance(hashfunc, str) or not hasattr(hashlib, hashfunc):
-        raise ValueError('hashfunc must be a function specified in hashlib')
+        raise ValueError("hashfunc must be a function specified in hashlib")
 
     hf = getattr(hashlib, hashfunc)
     h = hf()
@@ -24,6 +24,3 @@ def checksum(filename, hashfunc='md5'):
                 break
             h.update(chunk)
     return h.hexdigest()
-
-
-
