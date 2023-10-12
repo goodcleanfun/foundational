@@ -153,6 +153,7 @@ def nested_exists(d, key):
 def nested_set(d, keys, value):
     level = d
 
+
     key_pairs = list(zip(keys, keys[1:]))
     for key, next_key in key_pairs:
         key_is_string = isinstance(key, str)
@@ -197,8 +198,14 @@ def nested_set(d, keys, value):
         level = next_level
 
     last_key = keys[-1]
-    if last_key:
-        level[last_key] = value
+    if isinstance(last_key, int) or (isinstance(last_key, str) and last_key.isdigit()):
+        last_key = int(last_key)
+        if len(level) <= last_key:
+            if len(level) > 0:
+                level.extend([None] * (last_key + 1 - len(level)))
+            else:
+                level.extend([None] * (last_key + 1))
+    level[last_key] = value
 
 
 def nested_setattr(obj, keys, value):
