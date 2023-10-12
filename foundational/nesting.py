@@ -153,7 +153,6 @@ def nested_exists(d, key):
 def nested_set(d, keys, value):
     level = d
 
-
     key_pairs = list(zip(keys, keys[1:]))
     for key, next_key in key_pairs:
         key_is_string = isinstance(key, str)
