@@ -17,10 +17,11 @@ def download_file(url, dest, retries=3, retry_delay=5, session=requests, headers
     url = furl.furl(url)
 
     exists = os.path.exists(dest)
-    is_dir = os.path.isdir(dest) if exists else len(os.path.splitext(dest)[1]) > 0
+    is_dir = os.path.isdir(dest) if exists else len(os.path.splitext(dest)[1]) == 0
 
     base_dir = dest if is_dir else os.path.dirname(dest)
-    ensure_dir(base_dir)
+    if base_dir:
+        ensure_dir(base_dir)
 
     dest_filename = os.path.basename(dest) if not is_dir else None
     if not dest_filename and url.path.isfile:
