@@ -30,4 +30,3 @@ class LabeledEnum(enum.Enum):
         obj._value = value
         obj.label = label
         return obj
-
