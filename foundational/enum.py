@@ -21,10 +21,6 @@ class StringEnum(str, enum.Enum):
     def from_value(cls, value):
         return cls(value)
 
-    @classmethod
-    def __modify_schema__(cls, field_schema):
-        field_schema["enum"] = {m.name: m.value for m in cls}
-
 
 class LabeledEnum(enum.Enum):
     label: str
@@ -35,6 +31,3 @@ class LabeledEnum(enum.Enum):
         obj.label = label
         return obj
 
-    @classmethod
-    def __modify_schema__(cls, field_schema):
-        field_schema["enum"] = {m._value: m.label for m in cls}
