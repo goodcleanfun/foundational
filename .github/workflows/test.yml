@@ -9,6 +9,9 @@ on:
       - opened
       - synchronize
 
+concurrency:
+  group: test
+
 jobs:
   lint:
     runs-on: ubuntu-latest
